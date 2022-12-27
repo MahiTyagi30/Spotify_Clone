@@ -9,16 +9,16 @@ let mastersongname=document.getElementById('mastersongname');
 
 let songItem=Array.from(document.getElementsByClassName('songItems'));
 
-let songs =[
-   { songNmame: "I LIKE YOU",filePath: "song/1.mp3",coverPath:"image/cover1.jpeg"},
-   { songNmame: "LOVE ME",filePath: "song/2.mp3",coverPath:"image/cover1.jpeg"},
-   { songNmame: "GO",filePath: "song/3.mp3",coverPath:"image/cover1.jpeg"},
-   { songNmame: "MY WAY",filePath: "song/4.mp3",coverPath:"image/cover1.jpeg"},
-   { songNmame: "I LIKE YOU",filePath: "song/5.mp3",coverPath:"image/cover1.jpeg"}
+let song =[
+   { songName: "BOLNA HALKE HALKE",filePath: "song/1.mp3",coverPath:"image/cover1.jpeg"},
+   { songName: "PHLE NAZAR",filePath: "song/2.mp3",coverPath:"image/cover1.jpeg"},
+   { songName: "KAISE HUA",filePath: "song/3.mp3",coverPath:"image/cover1.jpeg"},
+   { songName: "MAAN MERI JAAN",filePath: "song/4.mp3",coverPath:"image/cover1.jpeg"},
+   { songName: "RAATAN LABIYA",filePath: "song/5.mp3",coverPath:"image/cover1.jpeg"}
 ]
 songItem.forEach((element,i)=>{
-    element.getElementsByTagName("img")[0].src=songs[i].coverPath;
-    element.getElementsByClassName("songname")[0].innerText=songs[i].songNmame;
+    element.getElementsByTagName("img")[0].src=song[i].coverPath;
+    element.getElementsByClassName("songname")[0].innerText=song[i].songName;
 })
 
 
@@ -48,7 +48,7 @@ audioElement.addEventListener('timeupdate',()=>{
 myProgressRange.addEventListener('change',()=>{
     audioElement.currentTime=myProgressRange.vaule*audioElement.duration/100;
 })
-const makeAllPlays=()=>{
+const makeAllPlays = ()=>{
     
     Array.from(document.getElementsByClassName('songitemPlay')).forEach((element)=>{
         element.classList.remove('fa-pause');
@@ -66,8 +66,8 @@ Array.from(document.getElementsByClassName('songitemPlay')).forEach((element)=>{
         songIndex=parseInt(e.target.id);
         e.target.classList.remove('fa-play');
         e.target.classList.add('fa-pause');
-        audioElement.src='songs/${songIndex+1}.mp3';
-        mastersongname.innerText=songs[songIndex].songNmame;
+        audioElement.src=`song/${songIndex+1}.mp3`;
+        mastersongname.innerText=song[songIndex].songName;
         audioElement.currentTime=0;
         audioElement.play();
         gif.style.opacity=1;
@@ -85,8 +85,8 @@ document.getElementById('next').addEventListener('click',()=>{
     else{
         songIndex +=1;
     }
-    audioElement.src='songs/${songIndex+1}.mp3';
-    mastersongname.innerText=songs[songIndex].songNmame;
+    audioElement.src=`song/${songIndex+1}.mp3`;
+    mastersongname.innerText=song[songIndex].songName;
         audioElement.currentTime=0;
         audioElement.play();
         masterPlay.classList.remove('fa-play');
@@ -99,8 +99,8 @@ document.getElementById('previous').addEventListener('click',()=>{
     else{
         songIndex -=1;
     }
-    audioElement.src='songs/${songIndex+1}.mp3';
-    mastersongname.innerText=songs[songIndex].songNmame;
+    audioElement.src=`song/${songIndex+1}.mp3`;
+    mastersongname.innerText=song[songIndex].songName;
         audioElement.currentTime=0;
         audioElement.play();
         masterPlay.classList.remove('fa-play');
